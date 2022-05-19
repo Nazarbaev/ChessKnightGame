@@ -26,7 +26,8 @@
         <maven.checkstyle.version>3.1.2</maven.checkstyle.version>
         <maven.surefire.version>3.0.0-M5</maven.surefire.version>
         <jacoco.version>0.8.8</jacoco.version>
-        <exec.mainClass><!-- TODO: the main class of your application that contains the main method --></exec.mainClass>
+        <tinylog.version>2.4.1</tinylog.version>
+        <exec.mainClass>boardgame.Main</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
@@ -52,6 +53,18 @@
             <artifactId>junit-jupiter-params</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog-api</artifactId>
+            <version>${tinylog.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog-impl</artifactId>
+            <version>${tinylog.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
     <build>
