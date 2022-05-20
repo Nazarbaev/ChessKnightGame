@@ -4,17 +4,21 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import javafx.stage.Stage;
 import org.tinylog.Logger;
+
 
 import boardgame.model.BoardGameModel;
 import boardgame.model.KnightDirection;
@@ -40,8 +44,8 @@ public class BoardGameController {
 
     private List<Position> empty = new ArrayList<>();
 
-    private int whiteMoves=0;
-    private int blackMoves=0;
+
+
 
     private HashSet<Position> visitedPositions = new HashSet<>();
 
@@ -49,10 +53,22 @@ public class BoardGameController {
 
 
 
+
     private Position selected;
 
 
     private BoardGameModel model = new BoardGameModel();
+
+    @FXML
+    private TextField WhiteMovesField;
+
+    @FXML
+    private TextField BlackMovesField;
+
+    @FXML
+    private TextField PlayerTurn;
+
+
 
     @FXML
     private GridPane board;
@@ -64,7 +80,15 @@ public class BoardGameController {
         createPieces();
         setSelectablePositions();
         showSelectablePositions();
+        BlackMovesField.textProperty().bind(model.numberOfMovesBlackProperty().asString());
+        WhiteMovesField.textProperty().bind(model.numberOfMovesWhiteProperty().asString());
+        PlayerTurn.textProperty().bind(model.nameofWhitePlayerProperty().concat(" turn"));
+
+
+
     }
+
+
 
 
     private void createBoard() {
@@ -118,6 +142,8 @@ public class BoardGameController {
 
     private void handleClickOnSquare(Position position) {
 
+
+
         switch (selectionPhase) {
             case SELECT_FROM -> {
                 if (selectablePositions.get(1).equals(position)) {
@@ -135,13 +161,15 @@ public class BoardGameController {
                     model.move(pieceNumber, direction); //pieceNumber is
                     deselectSelectedPosition();
                     alterSelectionPhase();
-                    whiteMoves++;
+                    model.increaseMoves("black");
+                    PlayerTurn.textProperty().bind(model.nameofWhitePlayerProperty().concat(" turn"));
+
                 }
             }
         }
     }
     private void handleClickOnSquare0(Position position) {
-
+        System.out.println(model.getNameOfWhitePlayer()+"2");
         switch (selectionPhase) {
             case SELECT_FROM -> {
                 if (selectablePositions.get(0).equals(position)) {
@@ -159,14 +187,14 @@ public class BoardGameController {
                     model.move(pieceNumber, direction); //pieceNumber is
                     deselectSelectedPosition();
                     alterSelectionPhase();
-                    blackMoves++;
+                    model.increaseMoves("white");
+                    PlayerTurn.textProperty().bind(model.nameofBlackPlayerProperty().concat(" turn"));
+
                 }
             }
         }
     }
-    private void changeOrder(){
-        orderOfMove=1;
-    }
+
 
     private void alterSelectionPhase() {
         selectionPhase = selectionPhase.alter();
@@ -198,14 +226,14 @@ public class BoardGameController {
 
     private void setSelectablePositions() {
 
-        System.out.println(visitedPositions+"visited");
+
 
         selectablePositions.clear();
         visitedPositions.addAll(model.getPiecePositions());
 
         switch (selectionPhase) {
             case SELECT_FROM -> {selectablePositions.addAll(model.getPiecePositions());
-                System.out.println(selectablePositions+"aaa");
+
 
             }
             case SELECT_TO -> {
@@ -217,18 +245,24 @@ public class BoardGameController {
                 selectablePositions.removeAll(visitedPositions);
                 if(selectablePositions.equals(empty)){
                   Logger.info("game is over");
-                  if(whiteMoves>blackMoves){
-                      exit(whiteMoves,"white");
+                  if(model.getNumberOfMovesBlack()<model.getNumberOfMovesWhite()){
+                      var alert = new Alert(Alert.AlertType.INFORMATION);
+                      alert.setHeaderText("Game is over");
+                      alert.setContentText(model.getNameOfWhitePlayer()+" wins with "+ model.getNumberOfMovesWhite()+" moves");
+                      alert.showAndWait();
                   }
                   else{
-                      exit(blackMoves,"black");
+                      var alert = new Alert(Alert.AlertType.INFORMATION);
+                      alert.setHeaderText("Game is over");
+                      alert.setContentText(model.getNameOfBlackPlayer()+" wins with "+ model.getNumberOfMovesBlack()+" moves");
+                      alert.showAndWait();
                   }
 
 
                 }
-                System.out.println(selectablePositions+"salam");
-                Logger.info(empty+"aleykum");
-                System.out.println(selectablePositions+"bbbb");
+
+
+
             }
         }
     }

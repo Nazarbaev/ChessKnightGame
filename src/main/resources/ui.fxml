@@ -1,93 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.BoardGameController">
+<VBox alignment="BOTTOM_CENTER" prefHeight="697.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.BoardGameController">
    <children>
-      <GridPane fx:id="some" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: grey;">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
+      <HBox alignment="CENTER" depthTest="DISABLE" prefHeight="78.0" prefWidth="487.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="3" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="5" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="7" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <TextField focusTraversable="false" fx:id="PlayerTurn" alignment="CENTER" prefHeight="33.0" prefWidth="170.0" />
          </children>
-      </GridPane>
-      <GridPane fx:id="board" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@ui.css">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </GridPane>
+      </HBox>
+      <AnchorPane prefHeight="652.0" prefWidth="600.0">
+         <children>
+            <GridPane fx:id="some" alignment="CENTER" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: grey;">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="1" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="3" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="5" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="7" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+               </children>
+            </GridPane>
+            <GridPane fx:id="board" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@ui.css">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+            <HBox alignment="CENTER" layoutX="84.0" layoutY="608.0" prefHeight="30.0" prefWidth="190.0">
+               <children>
+                  <Label text="Black moves" />
+                  <TextField fx:id="BlackMovesField" focusTraversable="false" prefHeight="24.0" prefWidth="62.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="307.0" layoutY="608.0" prefHeight="30.0" prefWidth="190.0">
+               <children>
+                  <Label text="White moves" />
+                  <TextField fx:id="WhiteMovesField" focusTraversable="false" prefHeight="24.0" prefWidth="62.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</VBox>

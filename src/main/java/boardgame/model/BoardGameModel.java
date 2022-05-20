@@ -1,11 +1,22 @@
 package boardgame.model;
 
-import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.*;
 
 import java.util.*;
+
 import org.tinylog.Logger;
 
 public class BoardGameModel {
+
+
+    private ReadOnlyIntegerWrapper numberOfMovesWhite= new ReadOnlyIntegerWrapper(0);
+
+    private ReadOnlyIntegerWrapper numberOfMovesBlack= new ReadOnlyIntegerWrapper(0);
+
+    private static ReadOnlyStringWrapper WhitePlayerName = new ReadOnlyStringWrapper("");
+
+    private static ReadOnlyStringWrapper BlackPlayerName = new ReadOnlyStringWrapper("");
+
 
     public static int BOARD_SIZE = 8;
 
@@ -36,6 +47,56 @@ public class BoardGameModel {
 
     public int getPieceCount() {
         return pieces.length;
+    }
+
+    public void increaseMoves( String name){
+        var whiteMoves =1;
+        var blackMoves =1;
+        if(name.equals("white")){
+            numberOfMovesWhite.set(numberOfMovesWhite.get()+whiteMoves);
+
+        }
+        else{
+            numberOfMovesBlack.set(numberOfMovesBlack.get()+blackMoves);
+
+        }
+
+
+
+    }
+  public int getNumberOfMovesWhite(){
+        return numberOfMovesWhite.get();
+  }
+
+   public int getNumberOfMovesBlack(){
+        return numberOfMovesBlack.get();
+    }
+
+    public String getNameOfWhitePlayer(){
+        return WhitePlayerName.get();
+    }
+    public String getNameOfBlackPlayer(){
+        return BlackPlayerName.get();
+    }
+    public void setWhitePlayerName(String name){
+        WhitePlayerName.set(name);
+    }
+    public void setBlackPlayerName(String name){
+        BlackPlayerName.set(name);
+    }
+
+    public ReadOnlyStringProperty nameofWhitePlayerProperty(){
+        return WhitePlayerName.getReadOnlyProperty();
+    }
+    public ReadOnlyStringProperty nameofBlackPlayerProperty(){
+        return BlackPlayerName.getReadOnlyProperty();
+    }
+  public ReadOnlyIntegerProperty numberOfMovesWhiteProperty(){
+        return numberOfMovesWhite.getReadOnlyProperty();
+    }
+
+  public ReadOnlyIntegerProperty numberOfMovesBlackProperty(){
+        return numberOfMovesBlack.getReadOnlyProperty();
     }
 
     public PieceType getPieceType(int pieceNumber) {
