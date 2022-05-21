@@ -20,7 +20,7 @@ public class BoardGameModel {
 
     public static int BOARD_SIZE = 8;
 
-    private final Piece[] pieces;
+    private final  Piece[] pieces;
 
 
 
@@ -58,44 +58,24 @@ public class BoardGameModel {
         }
         else{
             numberOfMovesBlack.set(numberOfMovesBlack.get()+blackMoves);
-
         }
 
+    }
+    public int getNumberOfMovesWhite() { return numberOfMovesWhite.get(); }
 
+    public int getNumberOfMovesBlack() { return numberOfMovesBlack.get(); }
 
-    }
-  public int getNumberOfMovesWhite(){
-        return numberOfMovesWhite.get();
-  }
-
-   public int getNumberOfMovesBlack(){
-        return numberOfMovesBlack.get();
-    }
-
-    public String getNameOfWhitePlayer(){
-        return WhitePlayerName.get();
-    }
-    public String getNameOfBlackPlayer(){
-        return BlackPlayerName.get();
-    }
-    public void setWhitePlayerName(String name){
-        WhitePlayerName.set(name);
-    }
-    public void setBlackPlayerName(String name){
-        BlackPlayerName.set(name);
-    }
-
-    public ReadOnlyStringProperty nameofWhitePlayerProperty(){
-        return WhitePlayerName.getReadOnlyProperty();
-    }
-    public ReadOnlyStringProperty nameofBlackPlayerProperty(){
-        return BlackPlayerName.getReadOnlyProperty();
-    }
-  public ReadOnlyIntegerProperty numberOfMovesWhiteProperty(){
+    public String getNameOfWhitePlayer() { return WhitePlayerName.get(); }
+    public String getNameOfBlackPlayer() { return BlackPlayerName.get(); }
+    public void setWhitePlayerName(String name) { WhitePlayerName.set(name); }
+    public void setBlackPlayerName(String name) { BlackPlayerName.set(name); }
+    public ReadOnlyStringProperty nameofBlackPlayerProperty(){ return BlackPlayerName.getReadOnlyProperty(); }
+    public ReadOnlyStringProperty nameofWhitePlayerProperty(){ return WhitePlayerName.getReadOnlyProperty(); }
+    public ReadOnlyIntegerProperty numberOfMovesWhiteProperty(){
         return numberOfMovesWhite.getReadOnlyProperty();
     }
 
-  public ReadOnlyIntegerProperty numberOfMovesBlackProperty(){
+    public ReadOnlyIntegerProperty numberOfMovesBlackProperty(){
         return numberOfMovesBlack.getReadOnlyProperty();
     }
 

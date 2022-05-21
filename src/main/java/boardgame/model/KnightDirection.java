@@ -37,7 +37,7 @@ public enum KnightDirection implements Direction {
     }
 
     public static void main(String[] args) {
-        System.out.println(of(1, 2));
+
     }
 
 }
