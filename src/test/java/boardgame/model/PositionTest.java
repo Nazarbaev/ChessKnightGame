@@ -9,8 +9,10 @@ class PositionTest {
     Position position = new Position(0,0);
 
 
+
     @Test
     void moveTo() {
+
 
         assertEquals(new Position(-1,-2),position.moveTo(KnightDirection.LEFT_UP));
         assertEquals(new Position(1,-2),position.moveTo(KnightDirection.LEFT_DOWN));

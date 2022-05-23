@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class KnightDirectionTest {
 
+
+
     @Test
     void of() {
         assertEquals(KnightDirection.RIGHT_DOWN,KnightDirection.of(1,2));

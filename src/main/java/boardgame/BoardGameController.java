@@ -183,7 +183,7 @@ public class BoardGameController {
                 if (selectablePositions.contains(position)) {
                     var pieceNumber = model.getPieceNumber(selected).getAsInt();
                     var direction = KnightDirection.of(position.row() - selected.row(), position.col() - selected.col());
-                    Logger.debug("Moving piece {} {}", pieceNumber, direction);
+                    Logger.debug("Moving piece saa {} {}", pieceNumber, direction);
                     model.move(pieceNumber, direction); //pieceNumber is
                     deselectSelectedPosition();
                     alterSelectionPhase();

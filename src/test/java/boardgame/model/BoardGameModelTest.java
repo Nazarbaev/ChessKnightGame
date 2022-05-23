@@ -1,8 +1,6 @@
 package boardgame.model;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
-import javafx.beans.property.SimpleObjectProperty;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
