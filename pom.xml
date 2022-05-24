@@ -6,7 +6,7 @@
     <groupId>hu.unideb.inf</groupId>
     <artifactId>ChessKnight</artifactId>
     <version>1.0</version>
-    <description>Chess knight with two players</description>
+    <description>Chess knight game with two players</description>
     <developers>
         <developer>
             <id>SQQXXW</id>
