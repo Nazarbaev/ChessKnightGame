@@ -130,6 +130,7 @@ class BoardGameModelTest {
         assertEquals(OptionalInt.of(0),model.getPieceNumber(new Position(3,3)));
         assertEquals(OptionalInt.of(1),model.getPieceNumber(new Position(5,5)));
         assertEquals(OptionalInt.empty(),model.getPieceNumber(new Position(1,2)));
+
     }
 
     @Test
