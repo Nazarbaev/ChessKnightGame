@@ -8,7 +8,7 @@ public class Piece {
     /**Type of pieces
      * */
     private final PieceType type;
-    /**Postion of pieces {@link ObjectProperty<Position> type }*/
+    /**Position of pieces {@link ObjectProperty<Position> type }*/
     private final ObjectProperty<Position> position = new SimpleObjectProperty<>();
    /** Constructor
     * @param type type of piece

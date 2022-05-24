@@ -1,10 +1,15 @@
 package boardgame.model;
 
+import boardgame.ResultModel.ResultRepositiry;
 import javafx.beans.property.*;
 
+
+import java.time.LocalDateTime;
 import java.util.*;
 
-import org.tinylog.Logger;
+import lombok.Getter;
+import lombok.Setter;
+
 /**Implements main logic of game*/
 public class BoardGameModel {
 
@@ -16,6 +21,15 @@ public class BoardGameModel {
     private static ReadOnlyStringWrapper WhitePlayerName = new ReadOnlyStringWrapper("");
     /** Black player name*/
     private static ReadOnlyStringWrapper BlackPlayerName = new ReadOnlyStringWrapper("");
+    @Getter
+    @Setter
+    private static String winnerName ;
+
+    @Setter
+    @Getter
+    private  LocalDateTime time;
+    @Getter
+    private static ResultRepositiry repositiry = new ResultRepositiry();
 
     /**Board size*/
     public static int BOARD_SIZE = 8;
@@ -167,6 +181,8 @@ public class BoardGameModel {
     /**Sets the name of black player
      * @param name name of black player */
     public void setBlackPlayerName(String name) { BlackPlayerName.set(name); }
+
+
     /**Provides property of name of black player
      * @return  property of name
      * */
@@ -175,6 +191,7 @@ public class BoardGameModel {
      * @return  property of name
      * */
     public ReadOnlyStringProperty nameofWhitePlayerProperty(){ return WhitePlayerName.getReadOnlyProperty(); }
+
     /**Provides property of moves count of white player
      * @return  property of moves count
      * */

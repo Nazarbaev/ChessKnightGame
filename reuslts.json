@@ -1,0 +1,56 @@
+[
+  {
+    "whitePlayer": "2",
+    "blackPlayer": "1",
+    "winner": "2",
+    "numberOfMovesWhite": 6,
+    "numberOfMovesBlack": 5
+  },
+  {
+    "whitePlayer": "w",
+    "blackPlayer": "q",
+    "winner": "w",
+    "numberOfMovesWhite": 6,
+    "numberOfMovesBlack": 5
+  },
+  {
+    "whitePlayer": "q",
+    "blackPlayer": "w",
+    "winner": "q",
+    "numberOfMovesWhite": 7,
+    "numberOfMovesBlack": 6,
+    "time": "2022-05-24T18:09:49.451819929"
+  },
+  {
+    "whitePlayer": "w",
+    "blackPlayer": "q",
+    "winner": "w",
+    "numberOfMovesWhite": 6,
+    "numberOfMovesBlack": 5,
+    "time": "2022-05-24T18:11:25.600399216"
+  },
+  {
+    "whitePlayer": "w",
+    "blackPlayer": "q",
+    "winner": "q",
+    "numberOfMovesWhite": 5,
+    "numberOfMovesBlack": 5,
+    "time": "2022-05-24T18:13:28.136526300"
+  },
+  {
+    "whitePlayer": "q",
+    "blackPlayer": "w",
+    "winner": "w",
+    "numberOfMovesWhite": 5,
+    "numberOfMovesBlack": 5,
+    "time": "2022-05-24T18:16:42.956445561"
+  },
+  {
+    "whitePlayer": "q",
+    "blackPlayer": "w",
+    "winner": "q",
+    "numberOfMovesWhite": 6,
+    "numberOfMovesBlack": 5,
+    "time": "2022-05-24T18:35:26.792142161"
+  }
+]

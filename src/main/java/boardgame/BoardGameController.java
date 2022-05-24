@@ -1,13 +1,23 @@
 package boardgame;
 
+import java.io.File;
+import java.io.IOException;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 
-import javafx.application.Platform;
+import boardgame.ResultModel.Result;
+
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -42,15 +52,11 @@ public class BoardGameController {
 
     private List<Position> selectablePositions = new ArrayList<>();
 
-    private List<Position> empty = new ArrayList<>();
-
-
 
 
     private HashSet<Position> visitedPositions = new HashSet<>();
 
-    private  int orderOfMove=1;
-
+    private int orderOfMove = 1;
 
 
 
@@ -69,13 +75,18 @@ public class BoardGameController {
     private TextField PlayerTurn;
 
 
-
     @FXML
     private GridPane board;
 
 
     @FXML
     private void initialize() {
+        try {
+            BoardGameModel.getRepositiry() .loadFromFile(new File("reuslts.json"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         createBoard();
         createPieces();
         setSelectablePositions();
@@ -83,12 +94,26 @@ public class BoardGameController {
         BlackMovesField.textProperty().bind(model.numberOfMovesBlackProperty().asString());
         WhiteMovesField.textProperty().bind(model.numberOfMovesWhiteProperty().asString());
         PlayerTurn.textProperty().bind(model.nameofWhitePlayerProperty().concat(" turn"));
-
-
+        model.setTime((LocalDateTime.now()));
 
     }
 
+    @FXML
+    private void switchScene(ActionEvent event) throws IOException {
+        if (selectablePositions.isEmpty()) {
 
+
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/Result.fxml"));
+            stage.setTitle("Result of the game");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } else {
+            Logger.info("Game is not over");
+        }
+
+    }
 
 
     private void createBoard() {
@@ -129,11 +154,11 @@ public class BoardGameController {
         var col = GridPane.getColumnIndex(square);
         var position = new Position(row, col);
         Logger.debug("Click on square {}", position);
-        if(orderOfMove==1){
-        handleClickOnSquare(position);
+        if (orderOfMove == 1) {
+            handleClickOnSquare(position);
 
         }
-        if(orderOfMove==0){
+        if (orderOfMove == 0) {
             handleClickOnSquare0(position);
 
         }
@@ -143,13 +168,12 @@ public class BoardGameController {
     private void handleClickOnSquare(Position position) {
 
 
-
         switch (selectionPhase) {
             case SELECT_FROM -> {
                 if (selectablePositions.get(1).equals(position)) {
                     selectPosition(position);
                     alterSelectionPhase();
-                    orderOfMove=0;
+                    orderOfMove = 0;
 
                 }
             }
@@ -168,14 +192,16 @@ public class BoardGameController {
             }
         }
     }
+
+
     private void handleClickOnSquare0(Position position) {
-        System.out.println(model.getNameOfWhitePlayer()+"2");
+        System.out.println(model.getNameOfWhitePlayer() + "2");
         switch (selectionPhase) {
             case SELECT_FROM -> {
                 if (selectablePositions.get(0).equals(position)) {
                     selectPosition(position);
                     alterSelectionPhase();
-                    orderOfMove=1;
+                    orderOfMove = 1;
 
                 }
             }
@@ -183,7 +209,7 @@ public class BoardGameController {
                 if (selectablePositions.contains(position)) {
                     var pieceNumber = model.getPieceNumber(selected).getAsInt();
                     var direction = KnightDirection.of(position.row() - selected.row(), position.col() - selected.col());
-                    Logger.debug("Moving piece saa {} {}", pieceNumber, direction);
+                    Logger.debug("Moving piece  {} {}", pieceNumber, direction);
                     model.move(pieceNumber, direction); //pieceNumber is
                     deselectSelectedPosition();
                     alterSelectionPhase();
@@ -227,12 +253,12 @@ public class BoardGameController {
     private void setSelectablePositions() {
 
 
-
         selectablePositions.clear();
         visitedPositions.addAll(model.getPiecePositions());
 
         switch (selectionPhase) {
-            case SELECT_FROM -> {selectablePositions.addAll(model.getPiecePositions());
+            case SELECT_FROM -> {
+                selectablePositions.addAll(model.getPiecePositions());
 
 
             }
@@ -241,35 +267,54 @@ public class BoardGameController {
                 for (var direction : model.getValidMoves(pieceNumber)) {
                     selectablePositions.add(selected.moveTo(direction));
                 }
-                System.out.println(pieceNumber);
                 selectablePositions.removeAll(visitedPositions);
-                if(selectablePositions.equals(empty)){
-                  Logger.info("game is over");
-                  if(model.getNumberOfMovesBlack()<model.getNumberOfMovesWhite()){
-                      var alert = new Alert(Alert.AlertType.INFORMATION);
-                      alert.setHeaderText("Game is over");
-                      alert.setContentText(model.getNameOfWhitePlayer()+" wins with "+ model.getNumberOfMovesWhite()+" moves");
-                      alert.showAndWait();
-                  }
-                  else{
-                      var alert = new Alert(Alert.AlertType.INFORMATION);
-                      alert.setHeaderText("Game is over");
-                      alert.setContentText(model.getNameOfBlackPlayer()+" wins with "+ model.getNumberOfMovesBlack()+" moves");
-                      alert.showAndWait();
-                  }
-
-
+                if (selectablePositions.isEmpty()) {
+                     gameOver();
                 }
-
 
 
             }
         }
     }
 
-    private  void exit( int Moves,String player){
+    private void gameOver(){
+        Logger.info("game is over");
+
+        if (model.getNumberOfMovesBlack() < model.getNumberOfMovesWhite()) {
+
+            model.setWinnerName(model.getNameOfWhitePlayer());
+
+            var alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Game is over");
+            alert.setContentText(model.getNameOfWhitePlayer() + " wins with " + model.getNumberOfMovesWhite() + " moves");
+            alert.showAndWait();
+        } else {
+            model.setWinnerName(model.getNameOfBlackPlayer());
+            var alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Game is over");
+            alert.setContentText(model.getNameOfBlackPlayer() + " wins with " + model.getNumberOfMovesBlack() + " moves");
+            alert.showAndWait();
+        }
+        BoardGameModel.getRepositiry() .add(
+                Result.builder()
+                        .blackPlayer(model.getNameOfBlackPlayer())
+                        .whitePlayer(model.getNameOfWhitePlayer())
+                        .numberOfMovesBlack(model.getNumberOfMovesBlack())
+                        .numberOfMovesWhite(model.getNumberOfMovesWhite())
+                        .winner(model.getWinnerName())
+                        .time(model.getTime())
+                        .build()
+        );
+        try {
+            BoardGameModel.getRepositiry() .saveToFile(new File("reuslts.json"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void exit(int Moves, String player) {
         var alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(player + " wins with" + Moves +" moves");
+        alert.setHeaderText(player + " wins with" + Moves + " moves");
         alert.setContentText("Game is Over");
         alert.showAndWait();
 

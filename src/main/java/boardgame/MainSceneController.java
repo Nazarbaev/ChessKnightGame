@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import boardgame.model.BoardGameModel;
 
-public class MainScene {
+public class MainSceneController {
 
     private BoardGameModel model = new BoardGameModel();
 
@@ -35,6 +35,8 @@ public class MainScene {
 
         stage.setTitle("Javafx board game model");
         stage.setScene(new Scene(root));
+
+
         stage.show();
 
 
