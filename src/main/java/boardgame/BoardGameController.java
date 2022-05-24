@@ -195,7 +195,7 @@ public class BoardGameController {
 
 
     private void handleClickOnSquare0(Position position) {
-        System.out.println(model.getNameOfWhitePlayer() + "2");
+
         switch (selectionPhase) {
             case SELECT_FROM -> {
                 if (selectablePositions.get(0).equals(position)) {
@@ -241,7 +241,6 @@ public class BoardGameController {
 
     private void deselectSelectedPosition() {
         hideSelectedPosition();
-        System.out.println(selected);
         selected = null;
     }
 

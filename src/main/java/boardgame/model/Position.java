@@ -1,11 +1,13 @@
 package boardgame.model;
-/** Position record to get a position of Piece
- * with two methods moveTo and toString
+/** Position record to get a position of piece
+ * with two methods moveTo and toString.
+ * @param row row of position
+ * @param col column of position
  * */
 public record Position(int row, int col) {
 
 
-    /** Moves {@link Piece } object in given direction
+    /** Moves {@link Piece } object in given direction.
      * @param  direction direction in which  piece should be moved
       * @return {@code position } new position of piece
      * */
@@ -13,7 +15,7 @@ public record Position(int row, int col) {
         return new Position(row + direction.getRowChange(), col + direction.getColChange());
     }
 
-   /** Changes Integer format to String
+   /** Changes Integer format to String.
     * @return  row and col in String format
     * */
     public String toString() {

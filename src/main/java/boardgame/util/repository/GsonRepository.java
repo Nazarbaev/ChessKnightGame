@@ -1,8 +1,6 @@
 package boardgame.util.repository;
 
-import boardgame.util.gson.LocalDateAdapter;
 import boardgame.util.gson.LocalDateTimeAdapter;
-import boardgame.util.gson.ZonedDateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -21,8 +19,6 @@ public class GsonRepository<T> extends Repository<T> {
 
     private static final Gson GSON = new GsonBuilder()
             .setPrettyPrinting()
-            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-            .registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeAdapter())
             .registerTypeAdapter(LocalDateTime.class,new LocalDateTimeAdapter())
             .create();
 

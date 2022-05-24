@@ -1,6 +1,6 @@
 package boardgame;
 
-import boardgame.ResultModel.Res;
+import boardgame.ResultModel.Data;
 import boardgame.model.BoardGameModel;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -17,13 +17,13 @@ import java.util.List;
 public class ResultController {
 
     @FXML
-    private TableColumn<Res, String> player;
+    private TableColumn<Data, String> player;
 
     @FXML
-    private TableView<Res> toptenTable;
+    private TableView<Data> toptenTable;
 
     @FXML
-    private TableColumn<Res, Integer> winCount;
+    private TableColumn<Data, Integer> winCount;
 
     @FXML
     void handleExit(ActionEvent event) {
@@ -31,7 +31,7 @@ public class ResultController {
 
     }
 
-    List<Res> result = new ArrayList<>();
+    List<Data> result = new ArrayList<>();
     @FXML
     public void initialize() {
 
@@ -40,7 +40,7 @@ public class ResultController {
         winCount.setCellValueFactory(new PropertyValueFactory<>("winCount"));
 
 
-        ObservableList<Res> observableResult = FXCollections.observableArrayList();
+        ObservableList<Data> observableResult = FXCollections.observableArrayList();
         observableResult.addAll(BoardGameModel.getRepositiry().getTop(5));
 
         toptenTable.setItems(observableResult);

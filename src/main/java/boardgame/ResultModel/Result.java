@@ -17,7 +17,6 @@ public class Result {
     private String winner;
     private int numberOfMovesWhite;
     private int numberOfMovesBlack;
-
     private  LocalDateTime time;
 
 }

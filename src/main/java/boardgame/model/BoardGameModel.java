@@ -10,16 +10,16 @@ import java.util.*;
 import lombok.Getter;
 import lombok.Setter;
 
-/**Implements main logic of game*/
+/**Implements main logic of game.*/
 public class BoardGameModel {
 
-    /** Number of moves of white player*/
+
     private ReadOnlyIntegerWrapper numberOfMovesWhite= new ReadOnlyIntegerWrapper(0);
-    /** Number of moves of black player*/
+
     private ReadOnlyIntegerWrapper numberOfMovesBlack= new ReadOnlyIntegerWrapper(0);
-    /** White player name*/
+
     private static ReadOnlyStringWrapper WhitePlayerName = new ReadOnlyStringWrapper("");
-    /** Black player name*/
+
     private static ReadOnlyStringWrapper BlackPlayerName = new ReadOnlyStringWrapper("");
     @Getter
     @Setter
@@ -31,19 +31,19 @@ public class BoardGameModel {
     @Getter
     private static ResultRepositiry repositiry = new ResultRepositiry();
 
-    /**Board size*/
+    /**Board size.*/
     public static int BOARD_SIZE = 8;
-    /**Array of pieces type of {@link Piece  }*/
+
     private final  Piece[] pieces;
 
 
-   /**Constructor */
+   /**Constructor. */
     public BoardGameModel() {
         this(new Piece(PieceType.BLACK, new Position(0, 0)),
 
                 new Piece(PieceType.YELLOW, new Position(BOARD_SIZE - 1, BOARD_SIZE - 1)));
     }
-    /**Constructor
+    /**Constructor.
      * @param pieces pieces */
     public BoardGameModel(Piece... pieces) {
         checkPieces(pieces);
@@ -61,12 +61,12 @@ public class BoardGameModel {
     }
 
 
-    /** Checks is direction valid,
-     * @throws IllegalArgumentException if pieceNumber is not valid
+    /** Checks is direction valid.
+     *
      * @param pieceNumber number of piece
      * @param direction direction of piece
      * @return {@link Boolean} false if new position outside of board and if new position is occupied, otherwise true
-     *
+     * @throws IllegalArgumentException if pieceNumber is not valid
     * */
     public boolean isValidMove(int pieceNumber, KnightDirection direction) {
         if (pieceNumber < 0 || pieceNumber >= pieces.length) {
@@ -83,7 +83,7 @@ public class BoardGameModel {
         }
         return true;
     }
-    /** Provides valid moves for knight piece
+    /** Provides valid moves for knight piece.
      * @param pieceNumber number of piece
      * @return {@link KnightDirection} valid directions of knight piece
      * */
@@ -96,7 +96,7 @@ public class BoardGameModel {
         }
         return validMoves;
     }
-    /**Moves piece in given direction
+    /**Moves piece in given direction.
      * @param  pieceNumber number of piece
      * @param direction given direction of piece
      * */
@@ -104,7 +104,7 @@ public class BoardGameModel {
     public void move(int pieceNumber, KnightDirection direction) {
         pieces[pieceNumber].moveTo(direction);
     }
-    /**Checks is a piece on board
+    /**Checks is a piece on board.
      * @param position position of piece
      * @return {@link Boolean} true if piece on board, otherwise false
      * */
@@ -112,7 +112,7 @@ public class BoardGameModel {
         return 0 <= position.row() && position.row() < BOARD_SIZE
                 && 0 <= position.col() && position.col() < BOARD_SIZE;
     }
-    /** Provides position of pieces
+    /** Provides position of pieces.
      * @return  positions of pieces*/
     public List<Position> getPiecePositions() {
         List<Position> positions = new ArrayList<>(pieces.length);
@@ -121,7 +121,7 @@ public class BoardGameModel {
         }
         return positions;
     }
-    /**Provides number of piece from {@code pieces array}
+    /**Provides number of piece from {@code pieces array}.
      * @param position position of piece
      * @return {@link OptionalInt object}*/
     public OptionalInt getPieceNumber(Position position) {
@@ -132,7 +132,7 @@ public class BoardGameModel {
         }
         return OptionalInt.empty();
     }
-    /**Changes {@link Piece piece object} to string format
+    /**Changes {@link Piece piece object} to string format.
      * @return piece and position in string format
      * */
     public String toString() {
@@ -142,12 +142,12 @@ public class BoardGameModel {
         }
         return joiner.toString();
     }
-    /**Provides the number of pieces
+    /**Provides the number of pieces.
      * @return pieces count */
     public int getPieceCount() {
         return pieces.length;
     }
-    /** Increases number of moves both black and white piece
+    /** Increases number of moves both black and white piece.
      * @param name color of the piece
      * */
     public void increaseMoves( String name){
@@ -163,68 +163,66 @@ public class BoardGameModel {
 
     }
 
-   /**Provides number of moves of white player
+   /**Provides number of moves of white player.
     * @return number of moves of white player */
     public int getNumberOfMovesWhite() { return numberOfMovesWhite.get(); }
-    /**Provides number of moves of black player
+    /**Provides number of moves of black player.
      * @return number of moves of black player */
     public int getNumberOfMovesBlack() { return numberOfMovesBlack.get(); }
-    /**Provides name of the white player
+    /**Provides name of the white player.
      * @return name of the white player*/
     public String getNameOfWhitePlayer() { return WhitePlayerName.get(); }
-    /**Provides name of the black player
+    /**Provides name of the black player.
      * @return name of the black player*/
     public String getNameOfBlackPlayer() { return BlackPlayerName.get(); }
-    /**Sets the name of white player
+    /**Sets the name of white player.
      * @param name name of white player */
     public void setWhitePlayerName(String name) { WhitePlayerName.set(name); }
-    /**Sets the name of black player
+    /**Sets the name of black player.
      * @param name name of black player */
     public void setBlackPlayerName(String name) { BlackPlayerName.set(name); }
 
 
-    /**Provides property of name of black player
+    /**Provides property of name of black player.
      * @return  property of name
      * */
     public ReadOnlyStringProperty nameofBlackPlayerProperty(){ return BlackPlayerName.getReadOnlyProperty(); }
-    /**Provides property of name of white player
+    /**Provides property of name of white player.
      * @return  property of name
      * */
     public ReadOnlyStringProperty nameofWhitePlayerProperty(){ return WhitePlayerName.getReadOnlyProperty(); }
 
-    /**Provides property of moves count of white player
+    /**Provides property of moves count of white player.
      * @return  property of moves count
      * */
     public ReadOnlyIntegerProperty numberOfMovesWhiteProperty(){
         return numberOfMovesWhite.getReadOnlyProperty();
     }
-    /**Provides property of moves count of black player
+    /**Provides property of moves count of black player.
      * @return  property of moves count
      * */
     public ReadOnlyIntegerProperty numberOfMovesBlackProperty(){
         return numberOfMovesBlack.getReadOnlyProperty();
     }
-   /**Provides  type of piece
+   /**Provides  type of piece.
     * @param pieceNumber number of piece
     * @return type of piece*/
     public PieceType getPieceType(int pieceNumber) {
         return pieces[pieceNumber].getType();
     }
-    /**Provides  position of piece
+    /**Provides  position of piece.
      * @param pieceNumber number of piece
      * @return position of piece*/
     public Position getPiecePosition(int pieceNumber) {
         return pieces[pieceNumber].getPosition();
     }
-    /**Provides property of position of piece
+    /**Provides property of position of piece.
      * @param  pieceNumber number of piece
      * @return property of position of piece*/
     public ObjectProperty<Position> positionProperty(int pieceNumber) {
         return pieces[pieceNumber].positionProperty();
     }
 
-    public static void main(String[] args) {
 
-    }
 
 }

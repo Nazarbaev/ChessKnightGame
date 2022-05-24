@@ -1,14 +1,10 @@
 package boardgame.ResultModel;
 
 import lombok.Builder;
-import lombok.Data;
 
-import java.time.LocalDate;
-import java.util.Map;
-
-@Data
+@lombok.Data
 @Builder
-public class Res implements Comparable<Res>{
+public class Data implements Comparable<Data>{
     private String name;
     private int winCount;
 
@@ -16,7 +12,7 @@ public class Res implements Comparable<Res>{
 
 
     @Override
-    public int compareTo(Res o) {
+    public int compareTo(Data o) {
         return Integer.compare(this.winCount,o.winCount);
     }
 }

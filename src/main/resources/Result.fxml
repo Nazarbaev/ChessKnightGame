@@ -9,17 +9,17 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.ResultController">
     <children>
-        <TableView fx:id="toptenTable" editable="true" layoutX="116.0" layoutY="75.0" prefHeight="383.0" prefWidth="371.0">
+        <TableView fx:id="toptenTable" editable="true" focusTraversable="false" layoutX="116.0" layoutY="75.0" prefHeight="383.0" prefWidth="371.0">
             <columns>
                 <TableColumn fx:id="player" prefWidth="187.0" text="Player" />
                 <TableColumn fx:id="winCount" prefWidth="183.0" text="Number of Wins" />
             </columns>
         </TableView>
-        <Label layoutX="211.0" layoutY="33.0" text="Top Five Players">
+        <Label focusTraversable="false" layoutX="211.0" layoutY="33.0" text="Top Five Players">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
-        <Button layoutX="241.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="51.0" prefWidth="122.0" text="Exit" />
+        <Button focusTraversable="false" layoutX="241.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="51.0" prefWidth="122.0" text="Exit" />
     </children>
 </Pane>

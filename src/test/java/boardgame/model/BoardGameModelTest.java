@@ -9,11 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardGameModelTest {
 
-    BoardGameModel model = new BoardGameModel(new Piece(PieceType.BLACK, new Position(3, 3)),new Piece(PieceType.YELLOW, new Position(5, 5)));
+    BoardGameModel model = new BoardGameModel(new Piece(PieceType.BLACK, new Position(3, 3)),
+            new Piece(PieceType.YELLOW, new Position(5, 5)),
+            new Piece(PieceType.YELLOW, new Position(7, 7)),
+            new Piece(PieceType.YELLOW, new Position(6, 5)));
 
     @Test
     void getPieceCount() {
-        assertEquals(2,model.getPieceCount());
+        assertEquals(4,model.getPieceCount());
     }
 
     @Test
@@ -40,7 +43,7 @@ class BoardGameModelTest {
 
 
     @Test
-    void isValidMove() {
+    void isValidMove() throws IllegalArgumentException {
         assertTrue(model.isValidMove(0,KnightDirection.DOWN_RIGHT));
         assertTrue(model.isValidMove(0,KnightDirection.RIGHT_DOWN));
         assertTrue(model.isValidMove(0,KnightDirection.RIGHT_UP));
@@ -49,6 +52,15 @@ class BoardGameModelTest {
         assertTrue(model.isValidMove(0,KnightDirection.UP_RIGHT));
         assertTrue(model.isValidMove(0,KnightDirection.LEFT_UP));
         assertTrue(model.isValidMove(0,KnightDirection.LEFT_DOWN));
+
+        assertFalse(model.isValidMove(2,KnightDirection.DOWN_RIGHT));
+        assertFalse(model.isValidMove(2, KnightDirection.LEFT_UP));
+        assertThrows(IllegalArgumentException.class,()->{
+            model.isValidMove(5,KnightDirection.LEFT_UP);
+        });
+
+
+
 
     }
 
@@ -107,6 +119,8 @@ class BoardGameModelTest {
         List<Position> positions = new ArrayList<>();
         positions.add(new Position(3,3));
         positions.add(new Position(5,5));
+        positions.add(new Position(7,7));
+        positions.add(new Position(6,5));
         assertEquals(positions,model.getPiecePositions());
 
     }
@@ -115,10 +129,11 @@ class BoardGameModelTest {
     void getPieceNumber() {
         assertEquals(OptionalInt.of(0),model.getPieceNumber(new Position(3,3)));
         assertEquals(OptionalInt.of(1),model.getPieceNumber(new Position(5,5)));
+        assertEquals(OptionalInt.empty(),model.getPieceNumber(new Position(1,2)));
     }
 
     @Test
     void testToString() {
-        assertEquals("[BLACK(3,3),YELLOW(5,5)]",model.toString());
+        assertEquals("[BLACK(3,3),YELLOW(5,5),YELLOW(7,7),YELLOW(6,5)]",model.toString());
     }
 }

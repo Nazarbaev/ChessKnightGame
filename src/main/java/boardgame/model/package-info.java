@@ -1,3 +1,3 @@
 
-/**Implements the domain logic of game*/
+/**Implements the domain logic of game.*/
 package boardgame.model;

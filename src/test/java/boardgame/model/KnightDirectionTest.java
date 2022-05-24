@@ -9,14 +9,18 @@ class KnightDirectionTest {
 
 
     @Test
-    void of() {
-        assertEquals(KnightDirection.RIGHT_DOWN,KnightDirection.of(1,2));
-        assertEquals(KnightDirection.RIGHT_UP,KnightDirection.of(-1,2));
-        assertEquals(KnightDirection.LEFT_UP,KnightDirection.of(-1,-2));
-        assertEquals(KnightDirection.LEFT_DOWN,KnightDirection.of(1,-2));
-        assertEquals(KnightDirection.UP_LEFT,KnightDirection.of(-2,-1));
-        assertEquals(KnightDirection.UP_RIGHT,KnightDirection.of(-2,1));
-        assertEquals(KnightDirection.DOWN_RIGHT,KnightDirection.of(2,1));
-        assertEquals(KnightDirection.DOWN_LEFT,KnightDirection.of(2,-1));
+    void of() throws IllegalArgumentException {
+        assertEquals(KnightDirection.of(1,2),KnightDirection.RIGHT_DOWN);
+        assertEquals(KnightDirection.of(-1,2),KnightDirection.RIGHT_UP);
+        assertEquals(KnightDirection.of(-1,-2),KnightDirection.LEFT_UP);
+        assertEquals(KnightDirection.of(1,-2),KnightDirection.LEFT_DOWN);
+        assertEquals(KnightDirection.of(-2,-1),KnightDirection.UP_LEFT);
+        assertEquals(KnightDirection.of(-2,1),KnightDirection.UP_RIGHT);
+        assertEquals(KnightDirection.of(2,1),KnightDirection.DOWN_RIGHT);
+        assertEquals(KnightDirection.of(2,-1),KnightDirection.DOWN_LEFT);
+        assertThrows(IllegalArgumentException.class,()->{
+           KnightDirection.of(3,4);
+        });
+
     }
 }
