@@ -1,4 +1,4 @@
-# TODO: a title for your project
+#  Chess Knight game
 
 The following game is played by two players.
 
